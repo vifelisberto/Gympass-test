@@ -34,11 +34,6 @@ Resultado esperado
 ------------------
 * A partir de um input de um arquivo de log do formato acima, montar o resultado da corrida com as seguintes informações: **Posição Chegada**, **Código Piloto**, **Nome Piloto**, **Qtde Voltas Completadas** e **Tempo Total de Prova**.
 
-Tecnologias Utilizadas
-------------------
-
-.NET CORE 2.1
-
 Desenvolvimento da Solução:
 ------------------
 Foi desenvolvido um Console Application em .NET CORE 2.1
