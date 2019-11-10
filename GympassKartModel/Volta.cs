@@ -12,7 +12,8 @@ namespace GympassKartModel
         public int NumeroPiloto { get; set; }
         public string NomePiloto { get; set; }
         public int NumVolta { get; set; }
-        public TimeSpan Tempo { get; set; }
+        public TimeSpan TempoTotal { get; set; }
+        public TimeSpan TempoVolta { get; set; }
         public float VelocidadeMedia { get; set; }
         public int MelhorVolta { get; set; }
 
@@ -25,17 +26,19 @@ namespace GympassKartModel
         public string ToString(int i, TimeSpan tempoPrimeiraVolta)
         {
             StringBuilder dadosVolta = new StringBuilder();
-            dadosVolta.Append($"Posição de chegada: {i}º \n");
-            dadosVolta.Append($"Cód. Piloto: {this.NumeroPiloto}\n");
-            dadosVolta.Append($"Nome Piloto: {this.NomePiloto}\n");
-            dadosVolta.Append($"Qtde Voltas: {this.NumVolta}\n");
-            dadosVolta.Append($"Tempo Total: {this.Tempo}\n");
-            dadosVolta.Append($"Velocidade Media: {this.VelocidadeMedia / this.NumVolta}\n");
-            dadosVolta.Append($"Melhor Volta: {this.MelhorVolta}");
+            dadosVolta.AppendLine();
+
+            dadosVolta.Append($"Posição de chegada: {i}º \n\n");
+            dadosVolta.Append($"\tCód. Piloto: {this.NumeroPiloto}\n");
+            dadosVolta.Append($"\tNome Piloto: {this.NomePiloto}\n");
+            dadosVolta.Append($"\tQtde Voltas: {this.NumVolta}\n");
+            dadosVolta.Append($"\tTempo Total: {this.TempoTotal}\n");
+            dadosVolta.Append($"\tVelocidade Media: {this.VelocidadeMedia / this.NumVolta} km/h\n");
+            dadosVolta.Append($"\tMelhor Volta: {this.MelhorVolta}");
 
             if (i != 1)
             {
-                dadosVolta.Append($"\nDiferença entre o primeiro colocado: {(this.HoraVolta - tempoPrimeiraVolta).TotalSeconds} segundos\n");
+                dadosVolta.Append($"\n\tDiferença entre o primeiro colocado: {(this.HoraVolta - tempoPrimeiraVolta).TotalSeconds} segundos\n");
             }
 
             dadosVolta.AppendLine();
@@ -50,9 +53,10 @@ namespace GympassKartModel
         public override string ToString()
         {
             StringBuilder dadosVolta = new StringBuilder();
-            dadosVolta.Append($"Cód. Piloto: {this.NumeroPiloto}\n");
-            dadosVolta.Append($"Nome Piloto: {this.NomePiloto}\n");
-            dadosVolta.Append($"Tempo Total: {this.Tempo}\n");
+            dadosVolta.Append($"\tCód. Piloto: {this.NumeroPiloto}\n");
+            dadosVolta.Append($"\tNome Piloto: {this.NomePiloto}\n");
+            dadosVolta.Append($"\tTempo: {this.TempoVolta}\n");
+            dadosVolta.Append($"\tVolta: {this.NumVolta}\n");
             dadosVolta.AppendLine();
 
             return dadosVolta.ToString();

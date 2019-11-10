@@ -1,0 +1,1 @@
+Desenvolvido em .NET CORE 2.1

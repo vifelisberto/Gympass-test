@@ -2,6 +2,7 @@
 using GympassKartModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace GympassKart
@@ -12,13 +13,23 @@ namespace GympassKart
 
         public static void Main(string[] args)
         {
+            string textoDivisor = "--------------------------------------------------";
+
             try
             {
                 // Inicia a execução para mostrar o Resultado da corrida.
+                Stopwatch tempo = new Stopwatch();
+                tempo.Start();
+
                 List<Volta> resultado = _bus.ResultadoCorrida(out Volta melhorVolta);
+
+                tempo.Stop();
+                Console.WriteLine($"Tempo de execução para montar resultado: {tempo.Elapsed} \n\n");
 
                 TimeSpan tempoPrimeiraVolta = resultado.FirstOrDefault().HoraVolta;
 
+                Console.WriteLine("Resultado da corrida: ");
+                Console.WriteLine(textoDivisor);
                 // Exibe o resultado da corrida no console.
                 for (int i = 1; i <= resultado.Count; i++)
                 {
@@ -26,12 +37,14 @@ namespace GympassKart
 
                     // Exibe o resultado no console.
                     Console.WriteLine(volta.ToString(i, tempoPrimeiraVolta));
+                    Console.WriteLine(textoDivisor);
                 }
 
-                Console.WriteLine($"Melhor volta da corrida: ");
+                Console.WriteLine($"\nMelhor volta da corrida: ");
                 Console.WriteLine(melhorVolta?.ToString());
 
-                Console.ReadKey();
+                Console.WriteLine("Precione enter para fechar.");
+                Console.ReadLine();
             }
             catch (Exception e)
             {

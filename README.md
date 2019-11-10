@@ -1,3 +1,8 @@
+PROBLEMA
+========
+Dado o seguinte log de uma corrida de Kart:
+
+```text
 Hora                               Piloto             Nº Volta   Tempo Volta       Velocidade média da volta
 23:49:08.277      038 – F.MASSA                           1		1:02.852                        44,275
 23:49:10.858      033 – R.BARRICHELLO                     1		1:04.352                        43,243
@@ -22,3 +27,21 @@ Hora                               Piloto             Nº Volta   Tempo Volta   
 23:53:06.741      015 – F.ALONSO                          4		1:20.050			34,763
 23:53:39.660      011 – S.VETTEL                          2		1:37.864			28,435
 23:54:57.757      011 – S.VETTEL                          3		1:18.097			35,633
+
+```
+
+Resultado esperado
+------------------
+* A partir de um input de um arquivo de log do formato acima, montar o resultado da corrida com as seguintes informações: **Posição Chegada**, **Código Piloto**, **Nome Piloto**, **Qtde Voltas Completadas** e **Tempo Total de Prova**.
+
+Tecnologias Utilizadas
+------------------
+
+.NET CORE 2.1
+
+Desenvolvimento da Solução:
+------------------
+Foi desenvolvido um Console Application em .NET CORE 2.1
+
+Parte do resultado obtido:
+![Exemplo](Parte_Resultado.PNG "Parte do resultado obtido")

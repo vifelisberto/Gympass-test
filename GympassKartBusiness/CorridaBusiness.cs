@@ -34,11 +34,17 @@ namespace GympassKartBusiness
                 {
                     // Se existir, altera a volta que ele está e soma o tempo, velocidade e melhor volta.
                     Volta existente = resultado[indexExistente];
+
+                    if (volta.TempoVolta <= existente.TempoVolta)
+                    {
+                        existente.MelhorVolta = volta.NumVolta;
+                    }
+
                     existente.NumVolta = volta.NumVolta;
                     existente.HoraVolta = volta.HoraVolta;
                     existente.VelocidadeMedia += volta.VelocidadeMedia;
-                    existente.Tempo += volta.Tempo;
-                    existente.MelhorVolta = existente.Tempo >= volta.Tempo ? volta.NumVolta : existente.NumVolta;
+                    existente.TempoTotal += volta.TempoVolta;
+                    existente.TempoVolta = volta.TempoVolta;
                 }
                 else
                 {
@@ -46,13 +52,13 @@ namespace GympassKartBusiness
                     resultado.Add(volta);
                 }
 
-                if(melhor == null)
+                if (melhor == null)
                 {
                     melhor = volta;
                 }
 
                 // Compara para descobrir a melhor volta da corrida.
-                melhor = volta.Tempo <= melhor?.Tempo ? volta : melhor;
+                melhor = volta.TempoVolta <= melhor?.TempoVolta ? volta : melhor;
             }
 
             // Ordena as voltas pelo número da volta e pelo Horário que foi registrado a volta.
@@ -94,7 +100,8 @@ namespace GympassKartBusiness
                     NumeroPiloto = numPiloto,
                     NomePiloto = nomePiloto,
                     NumVolta = numVolta,
-                    Tempo = tempoVolta,
+                    TempoVolta = tempoVolta,
+                    TempoTotal = tempoVolta,
                     VelocidadeMedia = velocidadeVolta,
                     MelhorVolta = numVolta
                 };
