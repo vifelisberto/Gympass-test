@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace GympassKart
+namespace GympassKartModel
 {
     /// <summary>
     /// Classe que representa a volta de uma corrida.
@@ -15,7 +15,7 @@ namespace GympassKart
         public TimeSpan Tempo { get; set; }
         public float VelocidadeMedia { get; set; }
         public int MelhorVolta { get; set; }
-        
+
         /// <summary>
         /// Método que retorna os dados da volta, comprando com o resultado da primeira volta.
         /// </summary>
@@ -35,7 +35,7 @@ namespace GympassKart
 
             if (i != 1)
             {
-                dadosVolta.Append($"\nDiferença entre o primeiro colocado: {(this.HoraVolta - tempoPrimeiraVolta).TotalSeconds}\n");
+                dadosVolta.Append($"\nDiferença entre o primeiro colocado: {(this.HoraVolta - tempoPrimeiraVolta).TotalSeconds} segundos\n");
             }
 
             dadosVolta.AppendLine();
@@ -52,9 +52,7 @@ namespace GympassKart
             StringBuilder dadosVolta = new StringBuilder();
             dadosVolta.Append($"Cód. Piloto: {this.NumeroPiloto}\n");
             dadosVolta.Append($"Nome Piloto: {this.NomePiloto}\n");
-            dadosVolta.Append($"Qtde Voltas: {this.NumVolta}\n");
             dadosVolta.Append($"Tempo Total: {this.Tempo}\n");
-            dadosVolta.Append($"Velocidade Media: {this.VelocidadeMedia / this.NumVolta}\n");
             dadosVolta.AppendLine();
 
             return dadosVolta.ToString();

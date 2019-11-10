@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GympassKartBusiness;
+using GympassKartModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,12 +8,14 @@ namespace GympassKart
 {
     public class Program
     {
+        private static readonly CorridaBusiness _bus = new CorridaBusiness();
+
         public static void Main(string[] args)
         {
             try
             {
                 // Inicia a execução para mostrar o Resultado da corrida.
-                List<Volta> resultado = Corrida.ResultadoCorrida(out Volta melhorVolta);
+                List<Volta> resultado = _bus.ResultadoCorrida(out Volta melhorVolta);
 
                 TimeSpan tempoPrimeiraVolta = resultado.FirstOrDefault().HoraVolta;
 
@@ -25,7 +29,7 @@ namespace GympassKart
                 }
 
                 Console.WriteLine($"Melhor volta da corrida: ");
-                Console.WriteLine(melhorVolta.ToString());
+                Console.WriteLine(melhorVolta?.ToString());
 
                 Console.ReadKey();
             }
